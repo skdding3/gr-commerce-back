@@ -1,4 +1,4 @@
-# GR Commerce
+# GR Commerce Backend
 
 커머스 페이지 프로젝트 백엔드 브랜치
 
