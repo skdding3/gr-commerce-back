@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gr.commerce.app.mapper.PopularProductMapper">
+
+    <select id="loadPopularProductList" resultType="com.gr.commerce.app.model.PopularProductDto">
+        SELECT ROW_NUMBER() OVER() AS ID
+             ,PIL.ITEM_ID
+             ,PIL.ITEM_NM
+             ,PIF.FILE_URL_PATH AS IMG
+             ,PCL.CAT_NM 	   AS CAT
+        FROM PRD_ITEM_LIST PIL
+            JOIN PRD_CAT_LIST  PCL ON PIL.CAT_CD  = PCL.CAT_CD
+            JOIN PRD_ITEM_FILE PIF ON PIL.ITEM_ID = PIF.ITEM_ID
+        ORDER BY PIL.UPD_DT
+    </select>
+
+</mapper>
